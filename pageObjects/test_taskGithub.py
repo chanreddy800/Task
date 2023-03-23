@@ -18,10 +18,10 @@ sha_code = None
 shacode1 = None
 
 
-class gitHub(unittest.TestCase):
+class gitHub():
 
     @pytest.mark.order(1)
-    def test_git_login(self):
+    def git_login(self):
         end_point = "/user"
         url = readConfig("url", "web_url") + end_point
         response = requests.get(url, headers=header)
@@ -31,7 +31,7 @@ class gitHub(unittest.TestCase):
         print(jsonData['login'])
 
     @pytest.mark.order(2)
-    def test_post_repo(self):
+    def post_repo(self):
         end_point = "/user/repos"
         url = readConfig("url", "web_url") + end_point
         file = open("//home//chandrakiran//PycharmProjects//APiAutomation//Data//repo.json", "r")
@@ -45,7 +45,7 @@ class gitHub(unittest.TestCase):
         print(repoName)
 
     @pytest.mark.order(3)
-    def test_put_main_branch(self):
+    def put_main_branch(self):
         url = readConfig("url", "web_url") + "/repos/chanreddy800/" + str(reponame) + "/contents/main"
         print(url)
         file = open('/home/chandrakiran/PycharmProjects/pythonProject10/Data/mainbranch.json', 'r')
@@ -63,7 +63,7 @@ class gitHub(unittest.TestCase):
         sha_code = sha
 
     @pytest.mark.order(4)
-    def test_createBranch_Post(self):
+    def createBranch_Post(self):
         print(str(sha_code))
         end_point = "/repos/chanreddy800/" + str(reponame) + "/git/refs"
 
@@ -86,7 +86,7 @@ class gitHub(unittest.TestCase):
             assert False
 
     @pytest.mark.order(5)
-    def test_createFileBranch(self):
+    def createFileBranch(self):
         url = readConfig("url", "web_url") + "/repos/chanreddy800/" + reponame + "/contents/intel"
         file = open('/home/chandrakiran/PycharmProjects/pythonProject10/Data/newfile.json', 'r')
         jsonFile = json.loads(file.read())
@@ -106,7 +106,7 @@ class gitHub(unittest.TestCase):
         print(shacode1)
 
     @pytest.mark.order(6)
-    def test_pull_request(self):
+    def pull_request(self):
         url = readConfig("url", "web_url") + "/repos/chanreddy800/" + reponame + "/pulls"
         file = open('/home/chandrakiran/PycharmProjects/pythonProject10/Data/pullrequest.json', 'r')
         jsonfile = json.loads(file.read())
@@ -120,7 +120,7 @@ class gitHub(unittest.TestCase):
             assert False
 
     @pytest.mark.order(7)
-    def test_updateFileinBranch(self):
+    def updateFileinBranch(self):
         url = readConfig("url", "web_url") + "/repos/chanreddy800/" + reponame + "/contents/intel"
         file = open('/home/chandrakiran/PycharmProjects/pythonProject10/Data/updateFile.json', 'r')
         json_input = json.loads(file.read())
